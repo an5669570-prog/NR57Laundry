@@ -40,6 +40,7 @@ section{padding:72px 0}
 .site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
 .logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:1.35rem;color:var(--g9)}
+.logo-img{width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#fff}
 .logo span{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--g7);color:#fff;font-size:1.1rem}
 .menu{display:flex;align-items:center;gap:26px;font-weight:600}
 .menu a{color:var(--mut);padding:4px 0;border-bottom:2px solid transparent}

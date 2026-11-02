@@ -12,12 +12,12 @@
     // Admin: tanpa menu pelanggan
     nav.innerHTML = `
       <div class="container nav">
-        <a href="admin.html" class="logo"><span>🫧</span>NR57Laundry <small class="tag">Admin</small></a>
+        <a href="admin.html" class="logo"><img class="logo-img" src="logo.png" alt="" width="40" height="40">NR57Laundry <small class="tag">Admin</small></a>
       </div>`;
   } else if (nav) {
     nav.innerHTML = `
       <div class="container nav">
-        <a href="beranda.html" class="logo" aria-label="NR57Laundry beranda"><span>🫧</span>NR57Laundry</a>
+        <a href="beranda.html" class="logo" aria-label="NR57Laundry beranda"><img class="logo-img" src="logo.png" alt="" width="40" height="40">NR57Laundry</a>
         <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false">☰</button>
         <nav class="menu" id="menu">
           <a href="${p}#beranda">Beranda</a>
@@ -46,7 +46,7 @@
     foot.innerHTML = `
       <div class="container">
         <div class="foot">
-          <div><a href="beranda.html" class="logo"><span>🫧</span>NR57Laundry</a><p>Laundry antar-jemput yang bersih, praktis, dan terpercaya.</p></div>
+          <div><a href="beranda.html" class="logo"><img class="logo-img" src="logo.png" alt="" width="40" height="40">NR57Laundry</a><p>Laundry antar-jemput yang bersih, praktis, dan terpercaya.</p></div>
           <nav><a href="beranda.html#layanan">Layanan</a><a href="beranda.html#harga">Harga</a><a href="pesan.html">Pesan</a><a href="status.html">Cek Status</a></nav>
         </div>
         <p class="copy">© NR57Laundry${new Date().getFullYear()} NR57Laundry. Semua hak dilindungi.</p>
@@ -55,7 +55,7 @@
 
   // Pengaman: jika data.js tidak termuat / versi lama, tampilkan petunjuk (bukan tabel kosong)
   if (typeof SERVICES === "undefined" || !SERVICES.some(s => s.satuan)) {
-    const msg = '<div class="sync-warn"><strong>Daftar layanan gagal dimuat.</strong> Ganti <code>js/data.js</code> dengan versi dari .zip terbaru, lalu tekan Ctrl+F5.</div>';
+    const msg = '<div class="sync-warn"><strong>Daftar layanan gagal dimuat.</strong> Ganti <code>data.js</code> dengan versi dari .zip terbaru, lalu tekan Ctrl+F5.</div>';
     const a = document.getElementById("layananList"); if (a) a.innerHTML = msg;
     ["hargaBody", "satuanBody"].forEach(id => { const t = document.getElementById(id); if (t) t.innerHTML = '<tr><td colspan="4">' + msg + "</td></tr>"; });
     return;

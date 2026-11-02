@@ -8,7 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header" id="navbar"></header>
@@ -59,7 +60,7 @@
       </div>
     </section>
 
-    <!-- LAYANAN (diisi dari js/data.js) -->
+    <!-- LAYANAN (diisi dari data.js) -->
     <section id="layanan">
       <div class="container">
         <div class="sec-head"><h2>Layanan laundry</h2><p>Pilih paket kiloan atau laundry satuan sesuai kebutuhan Anda.</p></div>
@@ -67,7 +68,7 @@
       </div>
     </section>
 
-    <!-- HARGA (diisi dari js/data.js) -->
+    <!-- HARGA (diisi dari data.js) -->
     <section class="alt" id="harga">
       <div class="container">
         <div class="sec-head"><h2>Daftar harga</h2><p>Layanan antar-jemput gratis.</p></div>
@@ -137,17 +138,17 @@
 
   <footer class="site-footer" id="footer"></footer>
 
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/bubbles.js"></script>
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+  <script src="bubbles.js"></script>
   <script>
-    // Pengaman: jika js/main.js gagal berjalan, tampilkan menu darurat + petunjuk (bukan menu kosong)
+    // Pengaman: jika main.js gagal berjalan, tampilkan menu darurat + petunjuk (bukan menu kosong)
     window.addEventListener("load", function () {
       var n = document.getElementById("navbar");
       if (!n || n.children.length) return;
-      n.innerHTML = '<div class="container nav"><a href="beranda.html" class="logo"><span>🫧</span>NR57Laundry</a>' +
+      n.innerHTML = '<div class="container nav"><a href="beranda.html" class="logo"><img class="logo-img" src="logo.png" alt="" width="40" height="40">NR57Laundry</a>' +
         '<nav class="menu" style="display:flex;flex-wrap:wrap;position:static;border:0;padding:0"><a href="beranda.html">Beranda</a><a href="beranda.html#layanan">Layanan</a><a href="beranda.html#harga">Harga</a><a href="beranda.html#kontak">Kontak</a><a href="status.html">Cek Status</a><a href="index.html">Keluar</a><a href="pesan.html" class="btn btn-sm">Pesan Sekarang</a></nav></div>' +
-        '<div class="sync-warn" style="margin:0;border-radius:0;text-align:center"><strong>File js/main.js tidak berjalan.</strong> Ganti dengan js/main.js dari NR57Laundry.zip, lalu tekan Ctrl+F5. Tekan F12 lalu buka tab Console untuk melihat pesan errornya.</div>';
+        '<div class="sync-warn" style="margin:0;border-radius:0;text-align:center"><strong>File main.js tidak berjalan.</strong> Ganti dengan main.js dari NR57Laundry.zip, lalu tekan Ctrl+F5. Tekan F12 lalu buka tab Console untuk melihat pesan errornya.</div>';
     });
   </script>
 </body>

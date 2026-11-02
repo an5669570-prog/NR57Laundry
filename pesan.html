@@ -6,8 +6,8 @@
   <title>Pesan Laundry - NR57Laundry</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="img/favicon.png">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header" id="navbar"></header>
@@ -107,30 +107,30 @@
       else if (e.message) window.__errs.push((e.filename ? e.filename.split("/").pop() + ": " : "") + e.message);
     }, true);
   </script>
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/pesan.js"></script>
-  <script src="js/bubbles.js"></script>
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+  <script src="pesan.js"></script>
+  <script src="bubbles.js"></script>
   <script>
-    // Pengaman: jika js/pesan.js tidak berjalan, formulir menampilkan penyebabnya (bukan reload diam-diam)
+    // Pengaman: jika pesan.js tidak berjalan, formulir menampilkan penyebabnya (bukan reload diam-diam)
     window.pesanPeringatan = function (fokus) {
       if (window.PESAN_SIAP) return;
       var w = document.getElementById("pesanWarn");
       w.hidden = false;
-      w.innerHTML = "<strong>Formulir belum aktif karena js/pesan.js tidak berjalan.</strong> Ganti <code>js/pesan.js</code> dan <code>js/data.js</code> dengan versi dari NR57Laundry.zip terbaru, lalu tekan Ctrl+F5.<br><small></small>";
+      w.innerHTML = "<strong>Formulir belum aktif karena pesan.js tidak berjalan.</strong> Ganti <code>pesan.js</code> dan <code>data.js</code> dengan versi dari NR57Laundry.zip terbaru, lalu tekan Ctrl+F5.<br><small></small>";
       w.querySelector("small").textContent = "Penyebab: " + (window.__errs.length ? window.__errs.join(" | ") : "file tidak termuat (periksa folder js)");
       if (fokus) w.scrollIntoView({ behavior: "smooth", block: "center" });
     };
     window.addEventListener("load", function () { window.pesanPeringatan(false); });
   </script>
   <script>
-    // Pengaman: jika js/main.js gagal berjalan, tampilkan menu darurat + petunjuk (bukan menu kosong)
+    // Pengaman: jika main.js gagal berjalan, tampilkan menu darurat + petunjuk (bukan menu kosong)
     window.addEventListener("load", function () {
       var n = document.getElementById("navbar");
       if (!n || n.children.length) return;
-      n.innerHTML = '<div class="container nav"><a href="beranda.html" class="logo"><img class="logo-img" src="img/logo.png" alt="" width="40" height="40">NR57Laundry</a>' +
+      n.innerHTML = '<div class="container nav"><a href="beranda.html" class="logo"><img class="logo-img" src="logo.png" alt="" width="40" height="40">NR57Laundry</a>' +
         '<nav class="menu" style="display:flex;flex-wrap:wrap;position:static;border:0;padding:0"><a href="beranda.html">Beranda</a><a href="beranda.html#layanan">Layanan</a><a href="beranda.html#harga">Harga</a><a href="beranda.html#kontak">Kontak</a><a href="status.html">Cek Status</a><a href="index.html">Keluar</a><a href="pesan.html" class="btn btn-sm">Pesan Sekarang</a></nav></div>' +
-        '<div class="sync-warn" style="margin:0;border-radius:0;text-align:center"><strong>File js/main.js tidak berjalan.</strong> Ganti dengan js/main.js dari NR57Laundry.zip, lalu tekan Ctrl+F5. Tekan F12 lalu buka tab Console untuk melihat pesan errornya.</div>';
+        '<div class="sync-warn" style="margin:0;border-radius:0;text-align:center"><strong>File main.js tidak berjalan.</strong> Ganti dengan main.js dari NR57Laundry.zip, lalu tekan Ctrl+F5. Tekan F12 lalu buka tab Console untuk melihat pesan errornya.</div>';
     });
   </script>
 </body>

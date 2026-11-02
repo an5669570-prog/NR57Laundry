@@ -6,12 +6,13 @@
   <title>Masuk - NR57Laundry</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main class="auth">
     <section class="auth-art">
-      <a href="index.html" class="logo" aria-label="NR57Laundry"><span>🫧</span>NR57Laundry</a>
+      <a href="index.html" class="logo" aria-label="NR57Laundry"><img class="logo-img" src="logo.png" alt="" width="40" height="40">NR57Laundry</a>
       <div>
         <h1>Laundry Bersih, Praktis, dan Terpercaya</h1>
         <p>Kami jemput cucian Anda, mencucinya dengan bersih, lalu mengantarnya kembali dalam keadaan wangi dan rapi.</p>
@@ -82,7 +83,7 @@
 
         <!-- Lupa kata sandi -->
         <form id="formLupa" class="login-panel" novalidate hidden>
-          <p class="login-hint" style="margin:0 0 16px">Masukkan <strong>kode pemulihan</strong> yang Anda simpan saat membuat akun, atau <strong>kode pemilik</strong> (<code>KODE_PEMILIK</code> di file <code>js/data.js</code>). Lalu buat kata sandi baru.</p>
+          <p class="login-hint" style="margin:0 0 16px">Masukkan <strong>kode pemulihan</strong> yang Anda simpan saat membuat akun, atau <strong>kode pemilik</strong> (<code>KODE_PEMILIK</code> di file <code>data.js</code>). Lalu buat kata sandi baru.</p>
           <div class="field"><label for="lKode">Kode pemulihan atau kode pemilik</label><input id="lKode" type="text" autocomplete="off" placeholder="Contoh: K7M2-9QXD-4TNB"></div>
           <div class="field"><label for="lPass">Kata sandi baru</label>
             <div class="pass-wrap"><input id="lPass" type="password" autocomplete="new-password" placeholder="Minimal 6 karakter"><button type="button" class="pass-toggle" data-for="lPass,lPass2" aria-label="Tampilkan password">Lihat</button></div>
@@ -98,8 +99,8 @@
 
   <dialog id="dlg"><div id="dlgBody"></div></dialog>
 
-  <script src="js/data.js"></script>
-  <script src="js/login.js"></script>
-  <script src="js/bubbles.js"></script>
+  <script src="data.js"></script>
+  <script src="login.js"></script>
+  <script src="bubbles.js"></script>
 </body>
 </html>

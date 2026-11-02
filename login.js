@@ -7,8 +7,8 @@ const dlg = $("dlg"), dlgBody = $("dlgBody");
 // Pengaman: semua file harus dari versi yang sama. Jika tidak, tampilkan petunjuk (bukan "password salah").
 if (typeof cekAdmin !== "function" || typeof resetAdmin !== "function" || typeof simpanAdmin !== "function") {
   const box = document.querySelector(".auth-form");
-  if (box) box.insertAdjacentHTML("afterbegin", '<div class="sync-warn"><strong>File website tidak sinkron.</strong> Ganti SEMUA file dengan isi NR57Laundry.zip terbaru (terutama <code>js/data.js</code> dan <code>js/login.js</code>), lalu tekan Ctrl+F5.</div>');
-  throw new Error("js/data.js dan js/login.js tidak sinkron");
+  if (box) box.insertAdjacentHTML("afterbegin", '<div class="sync-warn"><strong>File website tidak sinkron.</strong> Ganti SEMUA file dengan isi NR57Laundry.zip terbaru (terutama <code>data.js</code> dan <code>login.js</code>), lalu tekan Ctrl+F5.</div>');
+  throw new Error("data.js dan login.js tidak sinkron");
 }
 const FORMS = ["formPelanggan", "formAdmin", "formSetup", "formLupa"];
 

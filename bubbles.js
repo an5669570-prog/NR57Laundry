@@ -1,7 +1,7 @@
 /* ===== NR57Laundry - bubbles.js =====
    Efek busa sabun: gelembung muncul mengikuti kursor saat digeser atau diseret,
    melayang naik, lalu memudar. Juga muncul sedikit saat klik/sentuh.
-   Dipasang di semua halaman lewat <script src="js/bubbles.js"></script>. */
+   Dipasang di semua halaman lewat <script src="bubbles.js"></script>. */
 (function () {
   // Pengaturan: ubah angka di sini untuk menyesuaikan efek
   const CFG = {

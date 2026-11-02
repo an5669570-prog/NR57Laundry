@@ -8,8 +8,8 @@ let terakhir = null; // pesanan yang baru dikonfirmasi (untuk kirim ulang ke Wha
 
 // Isi pilihan layanan dari data.js (menggantikan pilihan cadangan di pesan.html)
 if (typeof SERVICES === "undefined" || !SERVICES.length || !SERVICES.some(s => s.grup)) {
-  $("err-layanan").textContent = "Daftar layanan gagal dimuat. Pastikan file js/data.js ada di folder js, lalu muat ulang dengan Ctrl+F5.";
-  throw new Error("js/data.js tidak termuat, SERVICES tidak ditemukan");
+  $("err-layanan").textContent = "Daftar layanan gagal dimuat. Pastikan file data.js ada di folder yang sama dengan file HTML, lalu muat ulang dengan Ctrl+F5.";
+  throw new Error("data.js tidak termuat, SERVICES tidak ditemukan");
 }
 $("layanan").innerHTML = '<option value="">Pilih layanan</option>' +
   ["Laundry Kiloan", "Laundry Satuan"].map(g => `<optgroup label="${g}">` +
