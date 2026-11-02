@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cek Status Pesanan - NR57Laundry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header" id="navbar"></header>
+
+  <main class="page">
+    <div class="container narrow">
+      <div class="sec-head"><h1 class="h-page">Cek status pesanan</h1><p>Masukkan kode pesanan yang Anda terima setelah konfirmasi, misalnya LG-261031-AB12.</p></div>
+      <form id="formCari" class="search-bar">
+        <input id="kode" type="text" placeholder="Kode pesanan" aria-label="Kode pesanan" autocomplete="off">
+        <button class="btn" type="submit">Cek Status</button>
+      </form>
+      <div id="hasil"></div>
+      <p class="note">Data pesanan disimpan di browser perangkat ini (LocalStorage), jadi kode hanya dapat dicek di browser yang sama.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="footer"></footer>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/status.js"></script>
+  <script src="js/bubbles.js"></script>
+  <script>
+    // Pengaman: jika js/main.js gagal berjalan, tampilkan menu darurat + petunjuk (bukan menu kosong)
+    window.addEventListener("load", function () {
+      var n = document.getElementById("navbar");
+      if (!n || n.children.length) return;
+      n.innerHTML = '<div class="container nav"><a href="beranda.html" class="logo"><span>🫧</span>NR57Laundry</a>' +
+        '<nav class="menu" style="display:flex;flex-wrap:wrap;position:static;border:0;padding:0"><a href="beranda.html">Beranda</a><a href="beranda.html#layanan">Layanan</a><a href="beranda.html#harga">Harga</a><a href="beranda.html#kontak">Kontak</a><a href="status.html">Cek Status</a><a href="index.html">Keluar</a><a href="pesan.html" class="btn btn-sm">Pesan Sekarang</a></nav></div>' +
+        '<div class="sync-warn" style="margin:0;border-radius:0;text-align:center"><strong>File js/main.js tidak berjalan.</strong> Ganti dengan js/main.js dari NR57Laundry.zip, lalu tekan Ctrl+F5. Tekan F12 lalu buka tab Console untuk melihat pesan errornya.</div>';
+    });
+  </script>
+</body>
+</html>

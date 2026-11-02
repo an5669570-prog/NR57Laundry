@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NR57Laundry - Laundry Bersih, Praktis, dan Terpercaya</title>
+  <meta name="description" content="Pesan laundry online dengan antar-jemput. Tanpa login, harga transparan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header" id="navbar"></header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="beranda">
+      <div class="container hero-grid">
+        <div>
+          <h1>Laundry Bersih, Praktis, dan Terpercaya</h1>
+          <p class="lead">NR57Laundry menjemput cucian Anda, mencucinya dengan deterjen yang lembut di kulit, lalu mengantarnya kembali dalam keadaan wangi dan rapi. Pesan dalam satu menit, tanpa perlu membuat akun.</p>
+          <div class="hero-actions">
+            <a href="pesan.html" class="btn">🧺 Pesan Sekarang</a>
+            <a href="status.html" class="btn btn-outline">Cek Status Pesanan</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <svg viewBox="0 0 400 400" role="img">
+            <circle cx="200" cy="205" r="175" fill="#d9f2e5"/>
+            <rect x="95" y="60" width="210" height="270" rx="26" fill="#fff" stroke="#117a4d" stroke-width="6"/>
+            <rect x="95" y="60" width="210" height="58" rx="26" fill="#117a4d"/>
+            <rect x="95" y="92" width="210" height="26" fill="#117a4d"/>
+            <circle cx="130" cy="89" r="9" fill="#fff"/><circle cx="160" cy="89" r="9" fill="#9be0bd"/>
+            <rect x="222" y="80" width="62" height="18" rx="9" fill="#0b4f33"/>
+            <circle cx="200" cy="225" r="80" fill="#eaf8f0" stroke="#117a4d" stroke-width="6"/>
+            <circle cx="200" cy="225" r="58" fill="#9be0bd"/>
+            <path d="M142 232c20-18 38 18 58 0s38 18 58 0v40c0 32-26 56-58 56s-58-24-58-56z" fill="#1fa463"/>
+            <circle cx="55" cy="130" r="22" fill="#fff" stroke="#9be0bd" stroke-width="4"/>
+            <circle cx="338" cy="110" r="14" fill="#fff" stroke="#9be0bd" stroke-width="4"/>
+            <circle cx="345" cy="260" r="26" fill="#fff" stroke="#9be0bd" stroke-width="4"/>
+            <circle cx="62" cy="285" r="12" fill="#fff" stroke="#9be0bd" stroke-width="4"/>
+            <circle cx="320" cy="340" r="10" fill="#fff" stroke="#9be0bd" stroke-width="4"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEUNGGULAN -->
+    <section class="alt">
+      <div class="container">
+        <div class="sec-head"><h2>Kenapa memilih NR57Laundry?</h2><p>Cucian beres tanpa Anda harus keluar rumah.</p></div>
+        <div class="grid">
+          <article class="card"><div class="icon">🚚</div><h3>Antar-jemput</h3><p>Kurir menjemput dan mengantar ke alamat Anda. Layanan antar-jemput gratis.</p></article>
+          <article class="card"><div class="icon">🌿</div><h3>Bersih dan wangi</h3><p>Deterjen lembut, pewangi segar, dan pakaian dipisah per pesanan.</p></article>
+          <article class="card"><div class="icon">⏱️</div><h3>Tepat waktu</h3><p>Estimasi pengerjaan jelas di setiap layanan, tersedia Express 3 jam dan 10 jam.</p></article>
+          <article class="card"><div class="icon">💰</div><h3>Harga transparan</h3><p>Total biaya langsung terlihat sebelum Anda mengonfirmasi pesanan.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- LAYANAN (diisi dari js/data.js) -->
+    <section id="layanan">
+      <div class="container">
+        <div class="sec-head"><h2>Layanan laundry</h2><p>Pilih paket kiloan atau laundry satuan sesuai kebutuhan Anda.</p></div>
+        <div class="grid" id="layananList"></div>
+      </div>
+    </section>
+
+    <!-- HARGA (diisi dari js/data.js) -->
+    <section class="alt" id="harga">
+      <div class="container">
+        <div class="sec-head"><h2>Daftar harga</h2><p>Layanan antar-jemput gratis.</p></div>
+        <h3 class="tbl-title">Laundry Kiloan</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Layanan</th><th>Estimasi</th><th>Minimal</th><th>Harga</th></tr></thead>
+            <tbody id="hargaBody"></tbody>
+          </table>
+        </div>
+        <h3 class="tbl-title">Laundry Satuan</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Jenis</th><th>Harga</th></tr></thead>
+            <tbody id="satuanBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARA PEMESANAN -->
+    <section id="cara">
+      <div class="container">
+        <div class="sec-head"><h2>Cara pemesanan</h2><p>Empat langkah, semuanya dari ponsel Anda.</p></div>
+        <ol class="steps">
+          <li><span class="num">1</span><h3>Isi formulir</h3><p>Pilih layanan, perkirakan berat, dan tentukan jadwal jemput.</p></li>
+          <li><span class="num">2</span><h3>Periksa ringkasan</h3><p>Pastikan data dan total biaya sudah benar, lalu konfirmasi.</p></li>
+          <li><span class="num">3</span><h3>Kami jemput dan cuci</h3><p>Kurir datang sesuai jadwal. Pantau progres dengan kode pesanan.</p></li>
+          <li><span class="num">4</span><h3>Terima dan bayar</h3><p>Pakaian diantar bersih dan rapi. Bayar transfer atau tunai.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- TESTIMONI -->
+    <section class="alt">
+      <div class="container">
+        <div class="sec-head"><h2>Kata pelanggan</h2></div>
+        <div class="grid">
+          <figure class="card quote"><p>"Jemputnya tepat waktu dan baju kembali wangi. Pesannya juga gampang, tidak perlu daftar."</p><figcaption><strong>Rina A.</strong><span>Karyawan swasta</span></figcaption></figure>
+          <figure class="card quote"><p>"Layanan Express menyelamatkan saya sebelum acara. Tiga jam selesai, setrikanya rapi."</p><figcaption><strong>Budi S.</strong><span>Mahasiswa</span></figcaption></figure>
+          <figure class="card quote"><p>"Bed cover tebal jadi bersih dan tidak apek. Harganya jelas dari awal."</p><figcaption><strong>Siti M.</strong><span>Ibu rumah tangga</span></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAK -->
+    <section id="kontak">
+      <div class="container contact">
+        <div>
+          <h2>Hubungi kami</h2>
+          <p class="muted">Ada pertanyaan soal pesanan atau layanan? Tim kami siap membantu setiap hari.</p>
+          <ul class="contact-list">
+            <li>📍 Lt. Salo, Kecamatan Panca Rijang, Kabupaten Sidenreng Rappang</li>
+            <li>📱 <a href="https://wa.me/6285654061856" target="_blank" rel="noopener">0856-5406-1856 (WhatsApp)</a></li>
+            <li><i class="fa-brands fa-instagram" aria-hidden="true"></i> <a href="https://www.instagram.com/nr57laundry_sidrap/" target="_blank" rel="noopener">nr57laundry_sidrap</a></li>
+            <li>🕗 Buka setiap hari pukul 07.00 - 17.00, tutup pada hari libur nasional</li>
+          </ul>
+        </div>
+        <div class="cta-box">
+          <h3>Cucian menumpuk?</h3>
+          <p>Serahkan ke NR57Laundry, kami jemput hari ini.</p>
+          <a href="pesan.html" class="btn btn-light">Pesan Sekarang</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer"></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/bubbles.js"></script>
+  <script>
+    // Pengaman: jika js/main.js gagal berjalan, tampilkan menu darurat + petunjuk (bukan menu kosong)
+    window.addEventListener("load", function () {
+      var n = document.getElementById("navbar");
+      if (!n || n.children.length) return;
+      n.innerHTML = '<div class="container nav"><a href="beranda.html" class="logo"><span>🫧</span>NR57Laundry</a>' +
+        '<nav class="menu" style="display:flex;flex-wrap:wrap;position:static;border:0;padding:0"><a href="beranda.html">Beranda</a><a href="beranda.html#layanan">Layanan</a><a href="beranda.html#harga">Harga</a><a href="beranda.html#kontak">Kontak</a><a href="status.html">Cek Status</a><a href="index.html">Keluar</a><a href="pesan.html" class="btn btn-sm">Pesan Sekarang</a></nav></div>' +
+        '<div class="sync-warn" style="margin:0;border-radius:0;text-align:center"><strong>File js/main.js tidak berjalan.</strong> Ganti dengan js/main.js dari NR57Laundry.zip, lalu tekan Ctrl+F5. Tekan F12 lalu buka tab Console untuk melihat pesan errornya.</div>';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pesan Laundry - NR57Laundry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header" id="navbar"></header>
+
+  <main class="page">
+    <div class="container">
+      <div class="sec-head"><h1 class="h-page">Pesan laundry</h1><p>Isi data berikut. Tidak perlu login. Anda akan melihat ringkasan sebelum pesanan dikonfirmasi.</p></div>
+
+      <div class="form-layout">
+        <form id="formPesan" novalidate class="card form-card" onsubmit="if(!window.PESAN_SIAP){event.preventDefault();window.pesanPeringatan&&window.pesanPeringatan(true);}">
+          <div class="sync-warn" id="pesanWarn" role="alert" hidden></div>
+          <div class="row2">
+            <div class="field"><label for="nama">Nama pelanggan</label><input id="nama" type="text" autocomplete="name" placeholder="Nama lengkap"><small class="err" id="err-nama"></small></div>
+            <div class="field"><label for="wa">Nomor WhatsApp</label><input id="wa" type="tel" autocomplete="tel" placeholder="081234567890"><small class="err" id="err-wa"></small></div>
+          </div>
+          <div class="field"><label for="alamat">Alamat lengkap</label><textarea id="alamat" rows="3" placeholder="Nama jalan, nomor rumah, RT/RW, patokan"></textarea><small class="err" id="err-alamat"></small></div>
+          <div class="row2">
+            <div class="field"><label for="layanan">Jenis layanan</label><select id="layanan">
+                <option value="">Pilih layanan</option>
+                <optgroup label="Laundry Kiloan">
+                  <option value="reguler">Paket Reguler</option>
+                  <option value="premium">Paket Premium</option>
+                  <option value="express-3">Express 3 Jam</option>
+                  <option value="express-10">Express 10 Jam</option>
+                  <option value="cuci-kering">Cuci Kering</option>
+                </optgroup>
+                <optgroup label="Laundry Satuan">
+                  <option value="bedcover-xl">Bed Cover Besar (XL)</option>
+                  <option value="bedcover-l">Bed Cover Sedang (L)</option>
+                  <option value="bedcover-s">Bed Cover Kecil (S)</option>
+                  <option value="selimut">Selimut</option>
+                  <option value="sprei">Sprei</option>
+                  <option value="baju-kaos">Baju Kaos</option>
+                  <option value="kemeja-pdh">Kemeja/PDH Setelan</option>
+                  <option value="celana">Celana Bahan/Jeans</option>
+                  <option value="sweater">Sweater/Hoodie</option>
+                  <option value="jubah">Jubah</option>
+                  <option value="jas">Jas Setelan</option>
+                  <option value="kebaya">Kebaya</option>
+                  <option value="gaun">Gaun</option>
+                  <option value="mukena">Mukena</option>
+                  <option value="sajadah">Sajadah</option>
+                  <option value="handuk">Handuk</option>
+                  <option value="sarung">Sarung</option>
+                  <option value="boneka-b">Boneka Besar</option>
+                  <option value="boneka-s">Boneka Sedang</option>
+                  <option value="boneka-k">Boneka Kecil</option>
+                </optgroup>
+              </select><small class="err" id="err-layanan"></small></div>
+            <div class="field"><label for="berat" id="lblBerat">Berat laundry (kg)</label><input id="berat" type="number" min="1" max="50" step="0.5" placeholder="Pilih layanan dulu"><small class="err" id="err-berat"></small></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label for="tanggal">Tanggal penjemputan</label><input id="tanggal" type="date"><small class="err" id="err-tanggal"></small></div>
+            <div class="field"><label for="waktu">Waktu penjemputan</label>
+              <select id="waktu"><option value="">Pilih waktu</option><option>08.00 - 10.00</option><option>10.00 - 12.00</option><option>13.00 - 15.00</option><option>15.00 - 17.00</option><option>17.00 - 19.00</option></select>
+              <small class="err" id="err-waktu"></small></div>
+          </div>
+          <div class="field"><label for="catatan">Catatan tambahan (opsional)</label><textarea id="catatan" rows="2" placeholder="Contoh: pisahkan baju putih, titip ke satpam"></textarea></div>
+
+          <fieldset class="field">
+            <legend>Metode pembayaran</legend>
+            <div class="pay-options">
+              <label class="pay"><input type="radio" name="bayar" value="transfer"><span><strong>🏦 Transfer bank</strong><small>Rincian pembayaran dikirim admin lewat WhatsApp</small></span></label>
+              <label class="pay"><input type="radio" name="bayar" value="tunai"><span><strong>💵 Tunai (Cash)</strong><small>Bayar langsung ke petugas</small></span></label>
+            </div>
+            <small class="err" id="err-bayar"></small>
+          </fieldset>
+
+          <button type="submit" class="btn btn-block">Lihat Ringkasan Pesanan</button>
+        </form>
+
+        <aside class="card estimate">
+          <h3>Estimasi biaya</h3>
+          <dl>
+            <div><dt>Layanan</dt><dd id="estLayanan">-</dd></div>
+            <div><dt>Jumlah</dt><dd id="estBerat">-</dd></div>
+            <div><dt>Estimasi selesai</dt><dd id="estWaktu">-</dd></div>
+            <div><dt>Biaya cuci</dt><dd id="estSub">Rp0</dd></div>
+            <div><dt>Antar-jemput</dt><dd id="estOngkir">Rp0</dd></div>
+            <div class="total"><dt>Total</dt><dd id="estTotal">Rp0</dd></div>
+          </dl>
+          <div class="pay-info" id="payInfo">Pilih metode pembayaran.</div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <dialog id="dlg"><div id="dlgBody"></div></dialog>
+  <footer class="site-footer" id="footer"></footer>
+
+  <script>
+    // Perekam error: mencatat script yang gagal dimuat atau error agar penyebabnya bisa ditampilkan di halaman
+    window.__errs = [];
+    window.addEventListener("error", function (e) {
+      var t = e.target;
+      if (t && t.tagName === "SCRIPT") window.__errs.push("gagal memuat " + (t.src || "").split("/").pop());
+      else if (e.message) window.__errs.push((e.filename ? e.filename.split("/").pop() + ": " : "") + e.message);
+    }, true);
+  </script>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/pesan.js"></script>
+  <script src="js/bubbles.js"></script>
+  <script>
+    // Pengaman: jika js/pesan.js tidak berjalan, formulir menampilkan penyebabnya (bukan reload diam-diam)
+    window.pesanPeringatan = function (fokus) {
+      if (window.PESAN_SIAP) return;
+      var w = document.getElementById("pesanWarn");
+      w.hidden = false;
+      w.innerHTML = "<strong>Formulir belum aktif karena js/pesan.js tidak berjalan.</strong> Ganti <code>js/pesan.js</code> dan <code>js/data.js</code> dengan versi dari NR57Laundry.zip terbaru, lalu tekan Ctrl+F5.<br><small></small>";
+      w.querySelector("small").textContent = "Penyebab: " + (window.__errs.length ? window.__errs.join(" | ") : "file tidak termuat (periksa folder js)");
+      if (fokus) w.scrollIntoView({ behavior: "smooth", block: "center" });
+    };
+    window.addEventListener("load", function () { window.pesanPeringatan(false); });
+  </script>
+  <script>
+    // Pengaman: jika js/main.js gagal berjalan, tampilkan menu darurat + petunjuk (bukan menu kosong)
+    window.addEventListener("load", function () {
+      var n = document.getElementById("navbar");
+      if (!n || n.children.length) return;
+      n.innerHTML = '<div class="container nav"><a href="beranda.html" class="logo"><img class="logo-img" src="img/logo.png" alt="" width="40" height="40">NR57Laundry</a>' +
+        '<nav class="menu" style="display:flex;flex-wrap:wrap;position:static;border:0;padding:0"><a href="beranda.html">Beranda</a><a href="beranda.html#layanan">Layanan</a><a href="beranda.html#harga">Harga</a><a href="beranda.html#kontak">Kontak</a><a href="status.html">Cek Status</a><a href="index.html">Keluar</a><a href="pesan.html" class="btn btn-sm">Pesan Sekarang</a></nav></div>' +
+        '<div class="sync-warn" style="margin:0;border-radius:0;text-align:center"><strong>File js/main.js tidak berjalan.</strong> Ganti dengan js/main.js dari NR57Laundry.zip, lalu tekan Ctrl+F5. Tekan F12 lalu buka tab Console untuk melihat pesan errornya.</div>';
+    });
+  </script>
+</body>
+</html>

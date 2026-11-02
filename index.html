@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masuk - NR57Laundry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="auth">
+    <section class="auth-art">
+      <a href="index.html" class="logo" aria-label="NR57Laundry"><span>🫧</span>NR57Laundry</a>
+      <div>
+        <h1>Laundry Bersih, Praktis, dan Terpercaya</h1>
+        <p>Kami jemput cucian Anda, mencucinya dengan bersih, lalu mengantarnya kembali dalam keadaan wangi dan rapi.</p>
+        <svg viewBox="0 0 400 400" role="img" aria-label="Ilustrasi mesin cuci" style="margin:20px auto">
+          <circle cx="200" cy="205" r="175" fill="#d9f2e5"/>
+          <rect x="95" y="60" width="210" height="270" rx="26" fill="#fff" stroke="#117a4d" stroke-width="6"/>
+          <rect x="95" y="60" width="210" height="58" rx="26" fill="#117a4d"/>
+          <rect x="95" y="92" width="210" height="26" fill="#117a4d"/>
+          <circle cx="130" cy="89" r="9" fill="#fff"/><circle cx="160" cy="89" r="9" fill="#9be0bd"/>
+          <rect x="222" y="80" width="62" height="18" rx="9" fill="#0b4f33"/>
+          <circle cx="200" cy="225" r="80" fill="#eaf8f0" stroke="#117a4d" stroke-width="6"/>
+          <circle cx="200" cy="225" r="58" fill="#9be0bd"/>
+          <path d="M142 232c20-18 38 18 58 0s38 18 58 0v40c0 32-26 56-58 56s-58-24-58-56z" fill="#1fa463"/>
+          <circle cx="55" cy="130" r="22" fill="#fff" stroke="#9be0bd" stroke-width="4"/>
+          <circle cx="338" cy="110" r="14" fill="#fff" stroke="#9be0bd" stroke-width="4"/>
+          <circle cx="345" cy="260" r="26" fill="#fff" stroke="#9be0bd" stroke-width="4"/>
+          <circle cx="62" cy="285" r="12" fill="#fff" stroke="#9be0bd" stroke-width="4"/>
+        </svg>
+        <ul class="auth-points">
+          <li>Antar-jemput langsung ke alamat Anda</li>
+          <li>Total biaya terlihat sebelum pesanan dikonfirmasi</li>
+          <li>Pantau status cucian dengan kode pesanan</li>
+        </ul>
+      </div>
+      <small>© NR57Laundry. Semua hak dilindungi.</small>
+    </section>
+
+    <section class="auth-form">
+      <div class="login-card card">
+        <h2>Selamat datang</h2>
+        <p class="muted">Pilih cara Anda masuk.</p>
+
+        <div class="role-tabs" role="tablist">
+          <button type="button" class="role-tab active" data-role="pelanggan" role="tab" aria-selected="true"><span>🧺</span><strong>Pelanggan</strong><small>Pesan laundry</small></button>
+          <button type="button" class="role-tab" data-role="admin" role="tab" aria-selected="false"><span>🛠️</span><strong>Admin</strong><small>Kelola pesanan</small></button>
+        </div>
+
+        <!-- Pelanggan: tanpa sandi -->
+        <form id="formPelanggan" class="login-panel" novalidate>
+          <div class="field"><label for="pNama">Nama</label><input id="pNama" type="text" autocomplete="name" placeholder="Nama lengkap"><small class="err" id="err-pNama"></small></div>
+          <div class="field"><label for="pWa">Nomor WhatsApp</label><input id="pWa" type="tel" autocomplete="tel" placeholder="081234567890"><small class="err" id="err-pWa"></small></div>
+          <button class="btn btn-block" type="submit">Masuk</button>
+          <p class="login-hint">Tanpa sandi. Nama dan WhatsApp bersifat opsional, hanya untuk mengisi formulir pesanan otomatis. <a href="beranda.html"><strong>Lewati dan lihat website</strong></a></p>
+        </form>
+
+        <!-- Admin pertama kali: buat akun -->
+        <form id="formSetup" class="login-panel" novalidate hidden>
+          <p class="login-hint" style="margin:0 0 16px">Belum ada akun admin di browser ini. Buat username dan password untuk panel admin.</p>
+          <div class="field"><label for="sUser">Username</label><input id="sUser" type="text" autocomplete="username" placeholder="Minimal 3 karakter"></div>
+          <div class="field"><label for="sPass">Password</label>
+            <div class="pass-wrap"><input id="sPass" type="password" autocomplete="new-password" placeholder="Minimal 6 karakter"><button type="button" class="pass-toggle" data-for="sPass,sPass2" aria-label="Tampilkan password">Lihat</button></div>
+          </div>
+          <div class="field"><label for="sPass2">Ulangi password</label><input id="sPass2" type="password" autocomplete="new-password"></div>
+          <small class="err" id="err-setup"></small>
+          <button class="btn btn-block" type="submit">Buat akun dan masuk</button>
+        </form>
+
+        <!-- Admin: wajib sandi -->
+        <form id="formAdmin" class="login-panel" novalidate hidden>
+          <div class="field"><label for="aUser">Username</label><input id="aUser" type="text" autocomplete="username"></div>
+          <div class="field"><label for="aPass">Password</label>
+            <div class="pass-wrap"><input id="aPass" type="password" autocomplete="current-password"><button type="button" class="pass-toggle" data-for="aPass" aria-label="Tampilkan password">Lihat</button></div>
+          </div>
+          <small class="err" id="err-admin"></small>
+          <button class="btn btn-block" type="submit">Masuk sebagai Admin</button>
+          <p class="login-hint"><a href="#" id="linkLupa"><strong>Lupa kata sandi?</strong></a></p>
+        </form>
+
+        <!-- Lupa kata sandi -->
+        <form id="formLupa" class="login-panel" novalidate hidden>
+          <p class="login-hint" style="margin:0 0 16px">Masukkan <strong>kode pemulihan</strong> yang Anda simpan saat membuat akun, atau <strong>kode pemilik</strong> (<code>KODE_PEMILIK</code> di file <code>js/data.js</code>). Lalu buat kata sandi baru.</p>
+          <div class="field"><label for="lKode">Kode pemulihan atau kode pemilik</label><input id="lKode" type="text" autocomplete="off" placeholder="Contoh: K7M2-9QXD-4TNB"></div>
+          <div class="field"><label for="lPass">Kata sandi baru</label>
+            <div class="pass-wrap"><input id="lPass" type="password" autocomplete="new-password" placeholder="Minimal 6 karakter"><button type="button" class="pass-toggle" data-for="lPass,lPass2" aria-label="Tampilkan password">Lihat</button></div>
+          </div>
+          <div class="field"><label for="lPass2">Ulangi kata sandi baru</label><input id="lPass2" type="password" autocomplete="new-password"></div>
+          <small class="err" id="err-lupa"></small>
+          <button class="btn btn-block" type="submit">Reset kata sandi</button>
+          <p class="login-hint"><a href="#" id="linkKembali">Kembali ke login</a></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="dlg"><div id="dlgBody"></div></dialog>
+
+  <script src="js/data.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/bubbles.js"></script>
+</body>
+</html>

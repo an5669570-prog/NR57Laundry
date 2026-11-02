@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Admin - NR57Laundry</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="beranda.html" class="logo"><img class="logo-img" src="img/logo.png" alt="" width="40" height="40">NR57Laundry</a>
+      <nav class="menu">
+        <a href="beranda.html">Lihat Website</a>
+        <button type="button" class="btn btn-outline btn-sm" id="logout">Keluar</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="container">
+      <div class="admin-top">
+        <div>
+          <h1 class="h-page">Panel Admin</h1>
+          <p class="muted" id="welcome">Masuk sebagai admin</p>
+        </div>
+      </div>
+
+      <div class="tabs" role="tablist">
+        <button type="button" class="tab-btn active" data-tab="dashboard">Dashboard</button>
+        <button type="button" class="tab-btn" data-tab="pesanan">Pesanan</button>
+        <button type="button" class="tab-btn" data-tab="harga">Layanan &amp; Harga</button>
+        <button type="button" class="tab-btn" data-tab="pengaturan">Pengaturan</button>
+      </div>
+
+      <!-- DASHBOARD -->
+      <div class="tab-panel" id="tab-dashboard">
+        <div class="stats" id="stats"></div>
+        <div class="dash-grid">
+          <div class="card"><h3>Pesanan per status</h3><div id="chStatus"></div></div>
+          <div class="card"><h3>Nilai pesanan per layanan</h3><div id="chLayanan"></div></div>
+          <div class="card"><h3>Perlu dikonfirmasi</h3><div id="todoList"></div></div>
+          <div class="card"><h3>Jadwal jemput hari ini</h3><div id="todayList"></div></div>
+        </div>
+      </div>
+
+      <!-- PESANAN -->
+      <div class="tab-panel" id="tab-pesanan" hidden>
+        <div class="toolbar">
+          <input type="search" id="cari" placeholder="Cari kode atau nama pelanggan" aria-label="Cari pesanan">
+          <select id="filter" aria-label="Filter status pesanan"><option value="">Semua status pesanan</option></select>
+          <select id="filterBayar" aria-label="Filter status pembayaran">
+            <option value="">Semua pembayaran</option>
+            <option value="belum">Belum dibayar</option>
+            <option value="lunas">Sudah dibayar</option>
+          </select>
+          <button type="button" class="btn btn-outline" id="exportCsv">Ekspor CSV</button>
+        </div>
+        <div class="table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>Kode</th><th>Pelanggan</th><th>Layanan</th><th>Total</th><th>Pembayaran</th><th>Status</th><th>Aksi</th></tr></thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- LAYANAN & HARGA -->
+      <div class="tab-panel" id="tab-harga" hidden>
+        <form id="formHarga" class="card" novalidate>
+          <h3>Ubah harga dan estimasi</h3>
+          <p class="muted" style="margin-bottom:14px">Perubahan langsung berlaku di halaman Beranda dan Pesan.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Layanan</th><th>Harga (Rp)</th><th>Estimasi</th></tr></thead>
+              <tbody id="hargaRows"></tbody>
+            </table>
+          </div>
+          <button class="btn" type="submit" style="margin-top:18px">Simpan harga</button>
+        </form>
+      </div>
+
+      <!-- PENGATURAN -->
+      <div class="tab-panel" id="tab-pengaturan" hidden>
+        <div class="set-grid">
+          <div>
+            <form id="formRek" class="card" novalidate>
+              <h3>Ongkos kirim</h3>
+              <p class="muted" style="margin-bottom:14px">Nomor rekening tidak ditampilkan di website. Rincian pembayaran dikirim admin lewat WhatsApp.</p>
+              <div class="row2">
+                <div class="field"><label for="oMin">Gratis ongkir mulai (kg)</label><input id="oMin" type="number" min="0" step="1"></div>
+                <div class="field"><label for="oBiaya">Biaya ongkir (Rp)</label><input id="oBiaya" type="number" min="0" step="500"></div>
+              </div>
+              <button class="btn" type="submit">Simpan pengaturan</button>
+            </form>
+          </div>
+          <div>
+            <form id="formAkun" class="card" novalidate>
+              <h3>Akun admin</h3>
+              <div class="field"><label for="uBaru">Username</label><input id="uBaru" type="text" autocomplete="username"></div>
+              <div class="field"><label for="pBaru">Password baru</label><input id="pBaru" type="password" autocomplete="new-password" placeholder="Minimal 6 karakter"></div>
+              <button class="btn" type="submit">Simpan akun</button>
+              <button class="btn btn-outline" type="button" id="kodeBaru" style="margin-top:12px">Buat kode pemulihan baru</button>
+            </form>
+            <div class="card danger-zone">
+              <h3>Zona berbahaya</h3>
+              <p class="muted">Menghapus semua data pesanan di browser ini. Tidak bisa dibatalkan.</p>
+              <button class="btn btn-danger" type="button" id="hapusSemua">Hapus semua pesanan</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog id="dlg"><div id="dlgBody"></div></dialog>
+
+  <script src="js/data.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/bubbles.js"></script>
+</body>
+</html>
